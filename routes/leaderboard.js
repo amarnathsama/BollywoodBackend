@@ -74,14 +74,8 @@ router.post("/update", async function (req, res, next) {
 
 router.get("/", async (req, res) => {
     const data = await Leaderboard.find({});
-    const sorted = data.sort((a, b) => {
-        return b - a;
-    });
-    let rv = [];
-    for (let x = 0; x < Math.min(sorted.length, 30); x++) {
-        rv.push(sorted[x]);
-    }
-    res.json(rv);
+    // console.log(data);
+    res.json(data);
 });
 
 router.get("/totalEntries", async (req, res) => {
@@ -96,6 +90,7 @@ router.get("/leastScore", async (req, res) => {
     const sorted = mn.sort((a, b) => {
         return b - a;
     });
+    console.log(sorted);
     res.json(sorted[29]);
 });
 
